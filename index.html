@@ -11,7 +11,7 @@
         .bg-tsinghua-purple { background-color: #6A0DAD; }
         .text-tsinghua-purple { color: #6A0DAD; }
         .border-tsinghua-purple { border-color: #6A0DAD; }
-        .hover\:bg-tsinghua-purple-dark:hover { background-color: #520a83; }
+        .hover\:bg-tsinghua-purple-dark:hover { background-color: #520a83; } /* Darker purple for hover */
 
         /* Base Font */
         body {
@@ -34,7 +34,7 @@
             border-color: #a1a1aa;
         }
 
-        /* Chat Widget Styles (Mostly unchanged) */
+        /* Chat Widget Styles */
         #chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
         #chat-button { background-color: #6A0DAD; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); transition: transform 0.2s ease-in-out; }
         #chat-button:hover { transform: scale(1.1); }
@@ -63,7 +63,7 @@
             #mobile-menu { /* JS handles visibility */ }
             #chat-window { width: 90vw; height: 70vh; bottom: 70px; right: 5vw; }
             /* Ensure lang toggle is visible on mobile */
-            #lang-toggle { margin-left: auto; margin-right: 10px; }
+            #lang-toggle-mobile { margin-left: auto; margin-right: 10px; } /* Adjusted from #lang-toggle */
         }
     </style>
 </head>
@@ -136,7 +136,7 @@
                 <li class="bg-white p-4 rounded-md shadow-sm border border-gray-200">
                      <p class="text-gray-700" data-lang-key="pub2">"[论文标题]", 作者1, <strong>课题组负责人</strong>, 作者3. <em>期刊/会议名称</em>, 年份. <a href="#" class="text-tsinghua-purple hover:underline">[链接/DOI]</a></p>
                 </li>
-            </ul>
+                </ul>
             <p class="text-center mt-6"><a href="#" class="text-tsinghua-purple hover:underline" data-lang-key="publicationsLink">查看所有发表论文 &rarr;</a></p>
         </section>
 
@@ -167,15 +167,15 @@
                     <p class="text-gray-600" data-lang-key="teamMember4Title">博士生 / 硕士生 / 博士后</p>
                     <p class="text-sm text-gray-500" data-lang-key="teamMember4Area">[研究方向]</p>
                 </div>
-            </div>
+                </div>
         </section>
 
         <section id="contact" class="scroll-mt-16">
             <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto" data-lang-key="contactTitle">联系我们</h2>
             <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md border border-gray-200 text-center">
-                <p class="text-gray-700 mb-2" data-lang-key="contactAddrLabel">地址：<span data-lang-key="contactAddrValue">北京市海淀区清华大学 [具体楼宇和房间号]</span></p>
-                <p class="text-gray-700 mb-2" data-lang-key="contactZipLabel">邮编：<span data-lang-key="contactZipValue">100084</span></p>
-                <p class="text-gray-700 mb-4" data-lang-key="contactEmailLabel">邮箱：<a href="mailto:[课题组邮箱]" class="text-tsinghua-purple hover:underline" data-lang-key="contactEmailValue">[课题组邮箱]</a></p>
+                <p class="text-gray-700 mb-2"><span data-lang-key="contactAddrLabel">地址：</span><span data-lang-key="contactAddrValue">北京市海淀区清华大学 [具体楼宇和房间号]</span></p>
+                <p class="text-gray-700 mb-2"><span data-lang-key="contactZipLabel">邮编：</span><span data-lang-key="contactZipValue">100084</span></p>
+                <p class="text-gray-700 mb-4"><span data-lang-key="contactEmailLabel">邮箱：</span><a href="mailto:[课题组邮箱]" class="text-tsinghua-purple hover:underline" data-lang-key="contactEmailValue">[课题组邮箱]</a></p>
                 <p class="text-gray-600" data-lang-key="contactWelcomeMsg">我们欢迎对我们研究感兴趣的潜在学生、博士后研究员和访问学者与我们联系。</p>
             </div>
         </section>
@@ -360,13 +360,15 @@
             const elements = document.querySelectorAll('[data-lang-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-lang-key');
-                if (languageData[lang][key]) {
+                if (languageData[lang][key] !== undefined) { // Check if key exists
                     // Use innerHTML for elements that might contain HTML tags (like publication list)
                     if (key.startsWith('pub')) {
                          el.innerHTML = languageData[lang][key];
                     } else {
                         el.textContent = languageData[lang][key];
                     }
+                } else {
+                    console.warn(`Missing translation key: ${key} for language: ${lang}`);
                 }
             });
 
@@ -374,27 +376,33 @@
             const placeholders = document.querySelectorAll('[data-lang-placeholder]');
             placeholders.forEach(el => {
                 const key = el.getAttribute('data-lang-placeholder');
-                if (languageData[lang][key]) {
+                 if (languageData[lang][key] !== undefined) {
                     el.placeholder = languageData[lang][key];
-                }
+                } else {
+                     console.warn(`Missing placeholder translation key: ${key} for language: ${lang}`);
+                 }
             });
 
              // Update elements with title text
             const titles = document.querySelectorAll('[data-lang-title]');
             titles.forEach(el => {
                 const key = el.getAttribute('data-lang-title');
-                if (languageData[lang][key]) {
+                 if (languageData[lang][key] !== undefined) {
                     el.title = languageData[lang][key];
-                }
+                } else {
+                     console.warn(`Missing title translation key: ${key} for language: ${lang}`);
+                 }
             });
 
              // Update elements with alt text
             const alts = document.querySelectorAll('[data-lang-alt]');
             alts.forEach(el => {
                 const key = el.getAttribute('data-lang-alt');
-                if (languageData[lang][key]) {
+                 if (languageData[lang][key] !== undefined) {
                     el.alt = languageData[lang][key];
-                }
+                } else {
+                     console.warn(`Missing alt translation key: ${key} for language: ${lang}`);
+                 }
             });
 
 
@@ -409,7 +417,9 @@
             const chatBodyContent = chatBody.querySelectorAll('.chat-message');
              if (chatBodyContent.length <= 1) { // Clear previous welcome if exists
                 chatBody.innerHTML = ''; // Clear chat body
-                appendMessage(languageData[lang]['chatWelcome'], 'bot'); // Add new welcome message
+                if (languageData[lang]['chatWelcome']) {
+                    appendMessage(languageData[lang]['chatWelcome'], 'bot'); // Add new welcome message
+                }
              }
 
             // Store language preference (optional)
@@ -435,18 +445,27 @@
         // --- Mobile Menu Toggle Logic ---
         const menuButton = document.getElementById('menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.querySelectorAll('#mobile-menu a');
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = menuButton.querySelector('i');
-            icon.setAttribute('data-lucide', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
-            lucide.createIcons(); // Re-render icon
-        });
+        const navLinks = document.querySelectorAll('#mobile-menu a'); // Corrected selector
+        if (menuButton && mobileMenu) { // Add null checks
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuButton.querySelector('i');
+                if (icon) { // Check if icon exists
+                    icon.setAttribute('data-lucide', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
+                    lucide.createIcons(); // Re-render icon
+                }
+            });
+        }
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuButton.querySelector('i').setAttribute('data-lucide', 'menu');
-                lucide.createIcons();
+                if (mobileMenu) mobileMenu.classList.add('hidden'); // Hide menu
+                if (menuButton) { // Check if menuButton exists
+                     const icon = menuButton.querySelector('i');
+                     if (icon) { // Check if icon exists
+                        icon.setAttribute('data-lucide', 'menu'); // Reset icon
+                        lucide.createIcons();
+                     }
+                }
             });
         });
 
@@ -458,123 +477,144 @@
         const chatInput = document.getElementById('chat-input');
         const sendButton = document.getElementById('send-button');
 
-        // Toggle Chat Window Visibility
-        chatButton.addEventListener('click', () => {
-            const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
-            chatWindow.style.display = isHidden ? 'flex' : 'none';
-            chatButton.style.display = isHidden ? 'none' : 'flex';
-             if (isHidden) {
-                chatInput.focus();
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }
-        });
+        // Ensure all elements exist before adding listeners
+        if (chatButton && chatWindow && closeChatButton && chatBody && chatInput && sendButton) {
 
-        closeChatButton.addEventListener('click', () => {
-            chatWindow.style.display = 'none';
-            chatButton.style.display = 'flex';
-        });
-
-        // Send Message Handler
-        const handleSendMessage = async () => {
-            const userMessage = chatInput.value.trim();
-            if (!userMessage) return;
-
-            appendMessage(userMessage, 'user');
-            chatInput.value = '';
-            sendButton.disabled = true;
-            sendButton.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>';
-            lucide.createIcons();
-
-            const loadingMessageElement = appendMessage(languageData[currentLanguage]['chatLoading'], 'loading');
-
-            try {
-                // Pass current language to API (simulation)
-                const botResponse = await callChatApi(userMessage, currentLanguage);
-                loadingMessageElement.remove();
-                appendMessage(botResponse, 'bot');
-            } catch (error) {
-                loadingMessageElement.remove();
-                console.error("API call failed:", error);
-                appendMessage(languageData[currentLanguage]['chatError'], 'error');
-            } finally {
-                sendButton.disabled = false;
-                sendButton.innerHTML = '<i data-lucide="send" class="w-5 h-5"></i>';
-                lucide.createIcons();
-                chatInput.focus();
-            }
-        };
-
-        sendButton.addEventListener('click', handleSendMessage);
-        chatInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                handleSendMessage();
-            }
-        });
-
-        // Simulate API Call Function (Now accepts language)
-        async function callChatApi(message, lang) {
-            console.log(`Simulating API call with message: "${message}" in language: ${lang}`);
-            const apiUrl = '/api/chat';
-            const apiKey = 'YOUR_API_KEY';
-
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            // --- Simulation Logic (language aware) ---
-            const responses = {
-                zh: {
-                    research: "我们模拟的API回复(中文)：我们的研究方向主要集中在...",
-                    join: "我们模拟的API回复(中文)：关于加入我们课题组...",
-                    greeting: "我们模拟的API回复(中文)：你好！很高兴为您服务。",
-                    default: `我们模拟的API回复(中文)：关于 "${message}"，我需要更多信息...`
-                },
-                en: {
-                    research: "Simulated API Response (EN): Our research focuses on...",
-                    join: "Simulated API Response (EN): Regarding joining our group...",
-                    greeting: "Simulated API Response (EN): Hello! Happy to help.",
-                    default: `Simulated API Response (EN): Regarding "${message}", I need more info...`
+            // Toggle Chat Window Visibility
+            chatButton.addEventListener('click', () => {
+                const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
+                chatWindow.style.display = isHidden ? 'flex' : 'none';
+                chatButton.style.display = isHidden ? 'none' : 'flex';
+                 if (isHidden) {
+                    chatInput.focus(); // Focus input when opening
+                    chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
                 }
-            }
-            const currentResponses = responses[lang] || responses['en']; // Default to English if lang not found
+            });
 
-            if (message.includes("研究方向") || message.toLowerCase().includes("research")) {
-                 return currentResponses.research;
-            } else if (message.includes("加入") || message.includes("申请") || message.toLowerCase().includes("join") || message.toLowerCase().includes("apply")) {
-                 return currentResponses.join;
-            } else if (message.includes("你好") || message.toLowerCase().includes("hello")) {
-                 return currentResponses.greeting;
-            }
-            return currentResponses.default;
-            // --- End Simulation ---
+            closeChatButton.addEventListener('click', () => {
+                chatWindow.style.display = 'none';
+                chatButton.style.display = 'flex';
+            });
 
-            // --- Real fetch example would need to potentially pass 'lang' in the body or headers ---
-            /*
-             const response = await fetch(apiUrl, {
-                 method: 'POST',
-                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-                 body: JSON.stringify({ query: message, language: lang }) // Example
-             });
-             // ... rest of fetch logic
-            */
+            // Send Message Handler
+            const handleSendMessage = async () => {
+                const userMessage = chatInput.value.trim();
+                if (!userMessage) return; // Don't send empty messages
+
+                appendMessage(userMessage, 'user');
+                chatInput.value = ''; // Clear input field
+                sendButton.disabled = true; // Disable button while processing
+                sendButton.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>'; // Show loading icon
+                lucide.createIcons();
+
+                // Use current language for loading message
+                const loadingText = languageData[currentLanguage]?.chatLoading || 'Thinking...';
+                const loadingMessageElement = appendMessage(loadingText, 'loading');
+
+                try {
+                    // Call the API function pointing to the Worker
+                    const botResponse = await callChatApi(userMessage, currentLanguage);
+                    if (loadingMessageElement) loadingMessageElement.remove(); // Remove loading message
+                    appendMessage(botResponse, 'bot');
+
+                } catch (error) {
+                     if (loadingMessageElement) loadingMessageElement.remove(); // Remove loading message on error too
+                    console.error("API call failed:", error);
+                    // Use current language for error message
+                    const errorText = languageData[currentLanguage]?.chatError || 'Sorry, connection failed.';
+                    appendMessage(errorText, 'error');
+                } finally {
+                    // Re-enable send button
+                    sendButton.disabled = false;
+                    sendButton.innerHTML = '<i data-lucide="send" class="w-5 h-5"></i>'; // Restore send icon
+                    lucide.createIcons();
+                    chatInput.focus(); // Re-focus input
+                }
+            };
+
+            // Add event listeners for sending message
+            sendButton.addEventListener('click', handleSendMessage);
+            chatInput.addEventListener('keypress', (event) => {
+                // Send message on Enter key press
+                if (event.key === 'Enter') {
+                    handleSendMessage();
+                }
+            });
+
+        } else {
+            console.error("One or more chat widget elements not found.");
         }
 
-        // Helper function to add messages
+
+        // --- API Call Function to call the Cloudflare Worker ---
+        async function callChatApi(message, lang) {
+            console.log(`Calling Worker API with message: "${message}" in language: ${lang}`);
+
+            // The relative path that will be routed to your Cloudflare Worker
+            // Ensure this matches the route you set up in Pages Functions settings.
+            const workerApiUrl = '/api/chat';
+
+            try {
+                const response = await fetch(workerApiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    // Send the user message and language preference to the Worker
+                    body: JSON.stringify({
+                        message: message,
+                        language: lang
+                    })
+                });
+
+                if (!response.ok) {
+                    // Handle errors returned from the Worker itself
+                    const errorText = await response.text(); // Get error details from Worker response
+                    console.error('Worker API Error:', response.status, errorText);
+                    // Try to provide a more specific error if possible
+                    throw new Error(errorText || `Worker request failed with status ${response.status}`);
+                }
+
+                // Get the response text (which should be the AI's answer) from the Worker
+                const botResponse = await response.text();
+                return botResponse;
+
+            } catch (error) {
+                console.error('Error calling Worker API:', error);
+                // Re-throw the error to be caught by handleSendMessage
+                // The error message might come from the fetch failure or the Worker's explicit error response
+                throw error;
+            }
+        }
+
+        // --- Helper function to add messages to the chat body ---
         function appendMessage(text, type) {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('chat-message', type);
-            // Use textContent for safety, unless you specifically need HTML
+            // Basic text sanitization (replace with a robust library if needed for security)
             messageDiv.textContent = text;
-            chatBody.appendChild(messageDiv);
-            chatBody.scrollTop = chatBody.scrollHeight;
-            return messageDiv;
+            if (chatBody) { // Check if chatBody exists
+                 chatBody.appendChild(messageDiv);
+                 // Scroll to the bottom to show the latest message
+                 chatBody.scrollTop = chatBody.scrollHeight;
+            } else {
+                console.error("Chat body element not found, cannot append message.");
+            }
+            return messageDiv; // Return the element for potential removal (like loading message)
         }
 
-        // Close chat if clicking outside
+        // --- Close chat if clicking outside of it (Optional Enhancement) ---
         document.addEventListener('click', function(event) {
-          const isClickInsideChat = chatWindow.contains(event.target);
-          const isClickOnButton = chatButton.contains(event.target);
-          if (!isClickInsideChat && !isClickOnButton && chatWindow.style.display === 'flex') {
-            chatWindow.style.display = 'none';
-            chatButton.style.display = 'flex';
+          // Check if the click target is outside the chat window and not the chat button
+          if (chatWindow && chatButton) { // Check if elements exist
+              const isClickInsideChat = chatWindow.contains(event.target);
+              const isClickOnButton = chatButton.contains(event.target);
+
+              // If chat is open and click is outside
+              if (!isClickInsideChat && !isClickOnButton && chatWindow.style.display === 'flex') {
+                chatWindow.style.display = 'none'; // Hide chat window
+                chatButton.style.display = 'flex';  // Show chat button
+              }
           }
         });
 
