@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>课题组名称 - 清华大学</title>
+    <title data-lang-key="websiteTitle">课题组名称 - 清华大学</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.css">
     <style>
@@ -11,174 +11,59 @@
         .bg-tsinghua-purple { background-color: #6A0DAD; }
         .text-tsinghua-purple { color: #6A0DAD; }
         .border-tsinghua-purple { border-color: #6A0DAD; }
-        .hover\:bg-tsinghua-purple-dark:hover { background-color: #520a83; } /* Darker purple for hover */
+        .hover\:bg-tsinghua-purple-dark:hover { background-color: #520a83; }
 
         /* Base Font */
         body {
             font-family: "Inter", "Helvetica Neue", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
         }
 
-        /* Chat Widget Styles */
-        #chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        #chat-button {
-            background-color: #6A0DAD; /* Tsinghua Purple */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease-in-out;
-        }
-        #chat-button:hover {
-            transform: scale(1.1);
-        }
-        #chat-window {
-            /* Initially hidden, controlled by JS */
-            position: absolute;
-            bottom: 80px; /* Above the button */
-            right: 0;
-            width: 350px; /* Slightly wider */
-            height: 500px; /* Slightly taller */
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            display: flex; /* Use flex for layout */
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid #e2e8f0; /* Border */
-        }
-        #chat-header {
-            background-color: #f1f5f9; /* Light gray background */
-            padding: 12px 16px;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-shrink: 0; /* Prevent header from shrinking */
-        }
-        #chat-header h3 {
-            font-weight: 600;
-            color: #334155;
-        }
-        #close-chat {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #64748b;
-        }
-        #chat-body {
-            flex-grow: 1;
-            padding: 16px;
-            overflow-y: auto;
-            background-color: #f8fafc; /* Even lighter background */
-            display: flex; /* Use flex for message alignment */
-            flex-direction: column; /* Stack messages vertically */
-            gap: 12px; /* Add gap between messages */
-        }
-        .chat-message {
-            padding: 10px 14px; /* Slightly more padding */
-            border-radius: 10px; /* More rounded */
-            max-width: 85%;
-            word-wrap: break-word;
-            line-height: 1.5;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Subtle shadow */
-        }
-        .chat-message.user {
-            background-color: #ede9fe; /* Lighter purple user message */
-            color: #5b21b6; /* Darker purple text */
-            align-self: flex-end; /* Align user messages to the right */
-            margin-left: auto;
-        }
-        .chat-message.bot {
-            background-color: #f1f5f9; /* Gray bot message */
-            color: #475569;
-            align-self: flex-start; /* Align bot messages to the left */
-            margin-right: auto;
-        }
-        .chat-message.loading {
-            background-color: #f1f5f9;
-            color: #64748b;
-            align-self: flex-start;
-            margin-right: auto;
-            font-style: italic;
-        }
-        .chat-message.error {
-            background-color: #fee2e2; /* Light red */
-            color: #b91c1c; /* Dark red */
-            align-self: flex-start;
-            margin-right: auto;
-        }
-        /* Input Area Styles */
-        #chat-input-area {
-            padding: 12px;
-            border-top: 1px solid #e2e8f0;
-            background-color: #f1f5f9;
-            display: flex;
-            gap: 8px; /* Space between input and button */
-            flex-shrink: 0; /* Prevent input area from shrinking */
-        }
-        #chat-input {
-            flex-grow: 1;
-            padding: 8px 12px;
+        /* Language Toggle Button Style */
+        #lang-toggle {
+            padding: 6px 12px;
             border: 1px solid #cbd5e1;
-            border-radius: 8px;
+            border-radius: 6px;
+            background-color: white;
+            color: #64748b;
             font-size: 0.875rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        #chat-input:focus {
-            border-color: #6A0DAD; /* Highlight border on focus */
-        }
-        #send-button {
-            background-color: #6A0DAD;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 14px;
             cursor: pointer;
-            transition: background-color 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.2s;
         }
-        #send-button:hover {
-            background-color: #520a83; /* Darker purple */
-        }
-        #send-button:disabled {
-            background-color: #a78bfa; /* Lighter purple when disabled */
-            cursor: not-allowed;
+        #lang-toggle:hover {
+            background-color: #f8fafc;
+            border-color: #a1a1aa;
         }
 
+        /* Chat Widget Styles (Mostly unchanged) */
+        #chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+        #chat-button { background-color: #6A0DAD; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); transition: transform 0.2s ease-in-out; }
+        #chat-button:hover { transform: scale(1.1); }
+        #chat-window { position: absolute; bottom: 80px; right: 0; width: 350px; height: 500px; background-color: white; border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e2e8f0; }
+        #chat-header { background-color: #f1f5f9; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        #chat-header h3 { font-weight: 600; color: #334155; }
+        #close-chat { background: none; border: none; cursor: pointer; color: #64748b; }
+        #chat-body { flex-grow: 1; padding: 16px; overflow-y: auto; background-color: #f8fafc; display: flex; flex-direction: column; gap: 12px; }
+        .chat-message { padding: 10px 14px; border-radius: 10px; max-width: 85%; word-wrap: break-word; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .chat-message.user { background-color: #ede9fe; color: #5b21b6; align-self: flex-end; margin-left: auto; }
+        .chat-message.bot { background-color: #f1f5f9; color: #475569; align-self: flex-start; margin-right: auto; }
+        .chat-message.loading { background-color: #f1f5f9; color: #64748b; align-self: flex-start; margin-right: auto; font-style: italic; }
+        .chat-message.error { background-color: #fee2e2; color: #b91c1c; align-self: flex-start; margin-right: auto; }
+        #chat-input-area { padding: 12px; border-top: 1px solid #e2e8f0; background-color: #f1f5f9; display: flex; gap: 8px; flex-shrink: 0; }
+        #chat-input { flex-grow: 1; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.875rem; outline: none; transition: border-color 0.2s; }
+        #chat-input:focus { border-color: #6A0DAD; }
+        #send-button { background-color: #6A0DAD; color: white; border: none; border-radius: 8px; padding: 8px 14px; cursor: pointer; transition: background-color 0.2s; display: flex; align-items: center; justify-content: center; }
+        #send-button:hover { background-color: #520a83; }
+        #send-button:disabled { background-color: #a78bfa; cursor: not-allowed; }
+
         /* Mobile Menu Button */
-        #menu-button {
-            display: none; /* Hidden by default */
-        }
+        #menu-button { display: none; }
         @media (max-width: 768px) {
-            #menu-button {
-                display: block; /* Show on small screens */
-            }
-            #navbar-links {
-                display: none; /* Hide desktop links on small screens */
-            }
-            #mobile-menu {
-                 /* Styles for mobile menu container are handled by JS toggle */
-            }
-            #chat-window {
-                width: 90vw; /* Make chat window wider on mobile */
-                height: 70vh; /* Make chat window taller on mobile */
-                bottom: 70px; /* Adjust position */
-                right: 5vw;
-            }
+            #menu-button { display: block; }
+            #navbar-links { display: none; }
+            #mobile-menu { /* JS handles visibility */ }
+            #chat-window { width: 90vw; height: 70vh; bottom: 70px; right: 5vw; }
+            /* Ensure lang toggle is visible on mobile */
+            #lang-toggle { margin-left: auto; margin-right: 10px; }
         }
     </style>
 </head>
@@ -188,147 +73,366 @@
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
                 <span class="inline-block w-8 h-8 bg-tsinghua-purple rounded-full flex items-center justify-center text-white font-bold text-sm">THU</span>
-                <span class="text-xl font-semibold text-tsinghua-purple">课题组名称</span>
+                <span class="text-xl font-semibold text-tsinghua-purple" data-lang-key="groupNameShort">课题组名称</span>
             </a>
+
             <div id="navbar-links" class="hidden md:flex items-center space-x-6">
-                <a href="#home" class="text-gray-600 hover:text-tsinghua-purple transition duration-200">首页</a>
-                <a href="#research" class="text-gray-600 hover:text-tsinghua-purple transition duration-200">研究方向</a>
-                <a href="#publications" class="text-gray-600 hover:text-tsinghua-purple transition duration-200">发表论文</a>
-                <a href="#team" class="text-gray-600 hover:text-tsinghua-purple transition duration-200">团队成员</a>
-                <a href="#contact" class="text-gray-600 hover:text-tsinghua-purple transition duration-200">联系我们</a>
+                <a href="#home" class="text-gray-600 hover:text-tsinghua-purple transition duration-200" data-lang-key="navHome">首页</a>
+                <a href="#research" class="text-gray-600 hover:text-tsinghua-purple transition duration-200" data-lang-key="navResearch">研究方向</a>
+                <a href="#publications" class="text-gray-600 hover:text-tsinghua-purple transition duration-200" data-lang-key="navPublications">发表论文</a>
+                <a href="#team" class="text-gray-600 hover:text-tsinghua-purple transition duration-200" data-lang-key="navTeam">团队成员</a>
+                <a href="#contact" class="text-gray-600 hover:text-tsinghua-purple transition duration-200" data-lang-key="navContact">联系我们</a>
+                <button id="lang-toggle" title="Switch Language">EN</button> </div>
+
+            <div class="md:hidden flex items-center"> <button id="lang-toggle-mobile" class="mr-4 text-sm py-1 px-2 border rounded" title="Switch Language">EN</button> <button id="menu-button" class="text-gray-600 hover:text-tsinghua-purple focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
-            <button id="menu-button" class="md:hidden text-gray-600 hover:text-tsinghua-purple focus:outline-none">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-             <a href="#home" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple">首页</a>
-             <a href="#research" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple">研究方向</a>
-             <a href="#publications" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple">发表论文</a>
-             <a href="#team" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple">团队成员</a>
-             <a href="#contact" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple">联系我们</a>
+             <a href="#home" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple" data-lang-key="navHomeMobile">首页</a>
+             <a href="#research" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple" data-lang-key="navResearchMobile">研究方向</a>
+             <a href="#publications" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple" data-lang-key="navPublicationsMobile">发表论文</a>
+             <a href="#team" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple" data-lang-key="navTeamMobile">团队成员</a>
+             <a href="#contact" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-tsinghua-purple" data-lang-key="navContactMobile">联系我们</a>
         </div>
     </nav>
 
     <main class="container mx-auto px-6 py-12">
+
         <section id="home" class="mb-16 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-tsinghua-purple mb-4">欢迎来到 [课题组名称]</h1>
-            <p class="text-lg text-gray-700 mb-6">隶属于清华大学 [学院/系名]</p>
-            <p class="max-w-3xl mx-auto text-gray-600">
+            <h1 class="text-4xl md:text-5xl font-bold text-tsinghua-purple mb-4" data-lang-key="homeTitle">欢迎来到 [课题组名称]</h1>
+            <p class="text-lg text-gray-700 mb-6" data-lang-key="homeSubtitle">隶属于清华大学 [学院/系名]</p>
+            <p class="max-w-3xl mx-auto text-gray-600" data-lang-key="homeDesc">
                 我们致力于 [主要研究领域] 的前沿探索，旨在 [研究目标]。欢迎对我们研究方向感兴趣的同学和学者加入或与我们合作。
             </p>
-            <img src="https://placehold.co/800x400/6A0DAD/FFFFFF?text=课题组风采" alt="[Image of 课题组风采]" class="mt-8 mx-auto rounded-lg shadow-md" onerror="this.src='https://placehold.co/800x400/cccccc/FFFFFF?text=Image+Not+Found'">
+            <img src="https://placehold.co/800x400/6A0DAD/FFFFFF?text=课题组风采" alt="[Image of 课题组风采]" data-lang-alt="homeImageAlt" class="mt-8 mx-auto rounded-lg shadow-md" onerror="this.src='https://placehold.co/800x400/cccccc/FFFFFF?text=Image+Not+Found'">
         </section>
 
         <section id="research" class="mb-16 scroll-mt-16">
-             <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto">研究方向</h2>
+             <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto" data-lang-key="researchTitle">研究方向</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold text-tsinghua-purple mb-3">[研究方向一]</h3>
-                    <p class="text-gray-600">简要介绍研究方向一的具体内容、方法和意义。</p>
+                    <h3 class="text-xl font-semibold text-tsinghua-purple mb-3" data-lang-key="researchArea1Title">[研究方向一]</h3>
+                    <p class="text-gray-600" data-lang-key="researchArea1Desc">简要介绍研究方向一的具体内容、方法和意义。</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold text-tsinghua-purple mb-3">[研究方向二]</h3>
-                    <p class="text-gray-600">简要介绍研究方向二的具体内容、方法和意义。</p>
+                    <h3 class="text-xl font-semibold text-tsinghua-purple mb-3" data-lang-key="researchArea2Title">[研究方向二]</h3>
+                    <p class="text-gray-600" data-lang-key="researchArea2Desc">简要介绍研究方向二的具体内容、方法和意义。</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold text-tsinghua-purple mb-3">[研究方向三]</h3>
-                    <p class="text-gray-600">简要介绍研究方向三的具体内容、方法和意义。</p>
+                    <h3 class="text-xl font-semibold text-tsinghua-purple mb-3" data-lang-key="researchArea3Title">[研究方向三]</h3>
+                    <p class="text-gray-600" data-lang-key="researchArea3Desc">简要介绍研究方向三的具体内容、方法和意义。</p>
                 </div>
             </div>
         </section>
 
         <section id="publications" class="mb-16 scroll-mt-16">
-            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto">发表论文</h2>
+            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto" data-lang-key="publicationsTitle">发表论文</h2>
             <ul class="space-y-4 max-w-4xl mx-auto">
                 <li class="bg-white p-4 rounded-md shadow-sm border border-gray-200">
-                    <p class="text-gray-700">"[论文标题]", 作者1, 作者2, <strong>课题组负责人</strong>. <em>期刊/会议名称</em>, 年份. <a href="#" class="text-tsinghua-purple hover:underline">[链接/DOI]</a></p>
+                    <p class="text-gray-700" data-lang-key="pub1">"[论文标题]", 作者1, 作者2, <strong>课题组负责人</strong>. <em>期刊/会议名称</em>, 年份. <a href="#" class="text-tsinghua-purple hover:underline">[链接/DOI]</a></p>
                 </li>
                 <li class="bg-white p-4 rounded-md shadow-sm border border-gray-200">
-                    <p class="text-gray-700">"[论文标题]", 作者1, <strong>课题组负责人</strong>, 作者3. <em>期刊/会议名称</em>, 年份. <a href="#" class="text-tsinghua-purple hover:underline">[链接/DOI]</a></p>
+                     <p class="text-gray-700" data-lang-key="pub2">"[论文标题]", 作者1, <strong>课题组负责人</strong>, 作者3. <em>期刊/会议名称</em>, 年份. <a href="#" class="text-tsinghua-purple hover:underline">[链接/DOI]</a></p>
                 </li>
             </ul>
-            <p class="text-center mt-6"><a href="#" class="text-tsinghua-purple hover:underline">查看所有发表论文 &rarr;</a></p>
+            <p class="text-center mt-6"><a href="#" class="text-tsinghua-purple hover:underline" data-lang-key="publicationsLink">查看所有发表论文 &rarr;</a></p>
         </section>
 
         <section id="team" class="mb-16 scroll-mt-16">
-            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto">团队成员</h2>
+            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto" data-lang-key="teamTitle">团队成员</h2>
             <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <div class="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                    <img src="https://placehold.co/150x150/6A0DAD/FFFFFF?text=PI" alt="[Image of 负责人照片]" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-tsinghua-purple" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
-                    <h3 class="text-lg font-semibold text-gray-800">[负责人姓名]</h3>
-                    <p class="text-tsinghua-purple">教授 / 研究员</p>
-                    <p class="text-sm text-gray-500">[研究领域简述]</p>
+                    <img src="https://placehold.co/150x150/6A0DAD/FFFFFF?text=PI" alt="[Image of 负责人照片]" data-lang-alt="teamMember1Alt" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-tsinghua-purple" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
+                    <h3 class="text-lg font-semibold text-gray-800" data-lang-key="teamMember1Name">[负责人姓名]</h3>
+                    <p class="text-tsinghua-purple" data-lang-key="teamMember1Title">教授 / 研究员</p>
+                    <p class="text-sm text-gray-500" data-lang-key="teamMember1Area">[研究领域简述]</p>
                 </div>
                 <div class="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                    <img src="https://placehold.co/150x150/EEEEEE/333333?text=成员" alt="[Image of 成员照片]" class="w-24 h-24 rounded-full mx-auto mb-4" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
-                    <h3 class="text-lg font-semibold text-gray-800">[成员姓名]</h3>
-                    <p class="text-gray-600">博士生 / 硕士生 / 博士后</p>
-                    <p class="text-sm text-gray-500">[研究方向]</p>
+                    <img src="https://placehold.co/150x150/EEEEEE/333333?text=成员" alt="[Image of 成员照片]" data-lang-alt="teamMember2Alt" class="w-24 h-24 rounded-full mx-auto mb-4" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
+                    <h3 class="text-lg font-semibold text-gray-800" data-lang-key="teamMember2Name">[成员姓名]</h3>
+                    <p class="text-gray-600" data-lang-key="teamMember2Title">博士生 / 硕士生 / 博士后</p>
+                    <p class="text-sm text-gray-500" data-lang-key="teamMember2Area">[研究方向]</p>
                 </div>
                  <div class="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                    <img src="https://placehold.co/150x150/EEEEEE/333333?text=成员" alt="[Image of 成员照片]" class="w-24 h-24 rounded-full mx-auto mb-4" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
-                    <h3 class="text-lg font-semibold text-gray-800">[成员姓名]</h3>
-                    <p class="text-gray-600">博士生 / 硕士生 / 博士后</p>
-                    <p class="text-sm text-gray-500">[研究方向]</p>
+                    <img src="https://placehold.co/150x150/EEEEEE/333333?text=成员" alt="[Image of 成员照片]" data-lang-alt="teamMember3Alt" class="w-24 h-24 rounded-full mx-auto mb-4" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
+                    <h3 class="text-lg font-semibold text-gray-800" data-lang-key="teamMember3Name">[成员姓名]</h3>
+                    <p class="text-gray-600" data-lang-key="teamMember3Title">博士生 / 硕士生 / 博士后</p>
+                    <p class="text-sm text-gray-500" data-lang-key="teamMember3Area">[研究方向]</p>
                 </div>
                  <div class="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                    <img src="https://placehold.co/150x150/EEEEEE/333333?text=成员" alt="[Image of 成员照片]" class="w-24 h-24 rounded-full mx-auto mb-4" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
-                    <h3 class="text-lg font-semibold text-gray-800">[成员姓名]</h3>
-                    <p class="text-gray-600">博士生 / 硕士生 / 博士后</p>
-                    <p class="text-sm text-gray-500">[研究方向]</p>
+                    <img src="https://placehold.co/150x150/EEEEEE/333333?text=成员" alt="[Image of 成员照片]" data-lang-alt="teamMember4Alt" class="w-24 h-24 rounded-full mx-auto mb-4" onerror="this.src='https://placehold.co/150x150/cccccc/FFFFFF?text=Photo'">
+                    <h3 class="text-lg font-semibold text-gray-800" data-lang-key="teamMember4Name">[成员姓名]</h3>
+                    <p class="text-gray-600" data-lang-key="teamMember4Title">博士生 / 硕士生 / 博士后</p>
+                    <p class="text-sm text-gray-500" data-lang-key="teamMember4Area">[研究方向]</p>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="scroll-mt-16">
-            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto">联系我们</h2>
+            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto" data-lang-key="contactTitle">联系我们</h2>
             <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md border border-gray-200 text-center">
-                <p class="text-gray-700 mb-2">地址：北京市海淀区清华大学 [具体楼宇和房间号]</p>
-                <p class="text-gray-700 mb-2">邮编：100084</p>
-                <p class="text-gray-700 mb-4">邮箱：<a href="mailto:[课题组邮箱]" class="text-tsinghua-purple hover:underline">[课题组邮箱]</a></p>
-                <p class="text-gray-600">我们欢迎对我们研究感兴趣的潜在学生、博士后研究员和访问学者与我们联系。</p>
+                <p class="text-gray-700 mb-2" data-lang-key="contactAddrLabel">地址：<span data-lang-key="contactAddrValue">北京市海淀区清华大学 [具体楼宇和房间号]</span></p>
+                <p class="text-gray-700 mb-2" data-lang-key="contactZipLabel">邮编：<span data-lang-key="contactZipValue">100084</span></p>
+                <p class="text-gray-700 mb-4" data-lang-key="contactEmailLabel">邮箱：<a href="mailto:[课题组邮箱]" class="text-tsinghua-purple hover:underline" data-lang-key="contactEmailValue">[课题组邮箱]</a></p>
+                <p class="text-gray-600" data-lang-key="contactWelcomeMsg">我们欢迎对我们研究感兴趣的潜在学生、博士后研究员和访问学者与我们联系。</p>
             </div>
         </section>
     </main>
 
     <footer class="bg-gray-800 text-gray-300 mt-16 py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 [课题组名称], 清华大学. 保留所有权利。</p>
-            <p class="text-sm mt-2">网站设计与开发</p>
+            <p data-lang-key="footerRights">&copy; 2025 [课题组名称], 清华大学. 保留所有权利。</p>
+            <p class="text-sm mt-2" data-lang-key="footerCredits">网站设计与开发</p>
         </div>
     </footer>
 
     <div id="chat-widget">
         <div id="chat-window" style="display: none;">
             <div id="chat-header">
-                <h3>智能助手</h3>
+                <h3 data-lang-key="chatTitle">智能助手</h3>
                 <button id="close-chat">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
             <div id="chat-body">
-                <div class="chat-message bot">
-                    你好！有什么可以帮您了解我们课题组的吗？
-                </div>
                 </div>
             <div id="chat-input-area">
-                <input type="text" id="chat-input" placeholder="在此输入您的问题..." autocomplete="off">
-                <button id="send-button" title="发送">
+                <input type="text" id="chat-input" placeholder="在此输入您的问题..." data-lang-placeholder="chatPlaceholder" autocomplete="off">
+                <button id="send-button" title="发送" data-lang-title="chatSendButtonTitle">
                     <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
-        <button id="chat-button" title="咨询课题组信息">
+        <button id="chat-button" title="咨询课题组信息" data-lang-title="chatButtonTitle">
              <i data-lucide="message-circle" class="w-8 h-8"></i>
         </button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest"></script>
     <script>
-        lucide.createIcons(); // Initialize Lucide icons
+        // --- Language Data ---
+        const languageData = {
+            'zh': {
+                websiteTitle: "课题组名称 - 清华大学",
+                groupNameShort: "课题组名称",
+                navHome: "首页",
+                navResearch: "研究方向",
+                navPublications: "发表论文",
+                navTeam: "团队成员",
+                navContact: "联系我们",
+                navHomeMobile: "首页",
+                navResearchMobile: "研究方向",
+                navPublicationsMobile: "发表论文",
+                navTeamMobile: "团队成员",
+                navContactMobile: "联系我们",
+                langToggle: "EN", // Text for the button to switch TO English
+                langToggleMobile: "EN",
+                homeTitle: "欢迎来到 [课题组名称]",
+                homeSubtitle: "隶属于清华大学 [学院/系名]",
+                homeDesc: "我们致力于 [主要研究领域] 的前沿探索，旨在 [研究目标]。欢迎对我们研究方向感兴趣的同学和学者加入或与我们合作。",
+                homeImageAlt: "[Image of 课题组风采]",
+                researchTitle: "研究方向",
+                researchArea1Title: "[研究方向一]",
+                researchArea1Desc: "简要介绍研究方向一的具体内容、方法和意义。",
+                researchArea2Title: "[研究方向二]",
+                researchArea2Desc: "简要介绍研究方向二的具体内容、方法和意义。",
+                researchArea3Title: "[研究方向三]",
+                researchArea3Desc: "简要介绍研究方向三的具体内容、方法和意义。",
+                publicationsTitle: "发表论文",
+                pub1: "\"[论文标题]\", 作者1, 作者2, <strong>课题组负责人</strong>. <em>期刊/会议名称</em>, 年份. <a href=\"#\" class=\"text-tsinghua-purple hover:underline\">[链接/DOI]</a>",
+                pub2: "\"[论文标题]\", 作者1, <strong>课题组负责人</strong>, 作者3. <em>期刊/会议名称</em>, 年份. <a href=\"#\" class=\"text-tsinghua-purple hover:underline\">[链接/DOI]</a>",
+                publicationsLink: "查看所有发表论文 &rarr;",
+                teamTitle: "团队成员",
+                teamMember1Alt: "[Image of 负责人照片]",
+                teamMember1Name: "[负责人姓名]",
+                teamMember1Title: "教授 / 研究员",
+                teamMember1Area: "[研究领域简述]",
+                teamMember2Alt: "[Image of 成员照片]",
+                teamMember2Name: "[成员姓名]",
+                teamMember2Title: "博士生 / 硕士生 / 博士后",
+                teamMember2Area: "[研究方向]",
+                teamMember3Alt: "[Image of 成员照片]",
+                teamMember3Name: "[成员姓名]",
+                teamMember3Title: "博士生 / 硕士生 / 博士后",
+                teamMember3Area: "[研究方向]",
+                teamMember4Alt: "[Image of 成员照片]",
+                teamMember4Name: "[成员姓名]",
+                teamMember4Title: "博士生 / 硕士生 / 博士后",
+                teamMember4Area: "[研究方向]",
+                contactTitle: "联系我们",
+                contactAddrLabel: "地址：",
+                contactAddrValue: "北京市海淀区清华大学 [具体楼宇和房间号]",
+                contactZipLabel: "邮编：",
+                contactZipValue: "100084",
+                contactEmailLabel: "邮箱：",
+                contactEmailValue: "[课题组邮箱]", // Keep email same
+                contactWelcomeMsg: "我们欢迎对我们研究感兴趣的潜在学生、博士后研究员和访问学者与我们联系。",
+                footerRights: "&copy; 2025 [课题组名称], 清华大学. 保留所有权利。",
+                footerCredits: "网站设计与开发",
+                // Chat Widget specific
+                chatTitle: "智能助手",
+                chatWelcome: "你好！有什么可以帮您了解我们课题组的吗？",
+                chatPlaceholder: "在此输入您的问题...",
+                chatSendButtonTitle: "发送",
+                chatButtonTitle: "咨询课题组信息",
+                chatLoading: "思考中...",
+                chatError: "抱歉，暂时无法连接到助手服务，请稍后再试。"
+            },
+            'en': {
+                websiteTitle: "Research Group Name - Tsinghua University",
+                groupNameShort: "Group Name",
+                navHome: "Home",
+                navResearch: "Research",
+                navPublications: "Publications",
+                navTeam: "Team",
+                navContact: "Contact",
+                navHomeMobile: "Home",
+                navResearchMobile: "Research",
+                navPublicationsMobile: "Publications",
+                navTeamMobile: "Team",
+                navContactMobile: "Contact",
+                langToggle: "中文", // Text for the button to switch TO Chinese
+                langToggleMobile: "中文",
+                homeTitle: "Welcome to [Research Group Name]",
+                homeSubtitle: "Affiliated with [Department/School Name], Tsinghua University",
+                homeDesc: "We are dedicated to cutting-edge exploration in [Main Research Field], aiming to [Research Goals]. We welcome interested students and scholars to join or collaborate with us.",
+                homeImageAlt: "[Image of Research Group]",
+                researchTitle: "Research Directions",
+                researchArea1Title: "[Research Area 1]",
+                researchArea1Desc: "Brief introduction to the content, methods, and significance of Research Area 1.",
+                researchArea2Title: "[Research Area 2]",
+                researchArea2Desc: "Brief introduction to the content, methods, and significance of Research Area 2.",
+                researchArea3Title: "[Research Area 3]",
+                researchArea3Desc: "Brief introduction to the content, methods, and significance of Research Area 3.",
+                publicationsTitle: "Publications",
+                pub1: "\"[Paper Title]\", Author 1, Author 2, <strong>PI Name</strong>. <em>Journal/Conference Name</em>, Year. <a href=\"#\" class=\"text-tsinghua-purple hover:underline\">[Link/DOI]</a>",
+                pub2: "\"[Paper Title]\", Author 1, <strong>PI Name</strong>, Author 3. <em>Journal/Conference Name</em>, Year. <a href=\"#\" class=\"text-tsinghua-purple hover:underline\">[Link/DOI]</a>",
+                publicationsLink: "View All Publications &rarr;",
+                teamTitle: "Team Members",
+                teamMember1Alt: "[Image of PI Photo]",
+                teamMember1Name: "[PI Name]",
+                teamMember1Title: "Professor / Researcher",
+                teamMember1Area: "[Brief Research Area]",
+                teamMember2Alt: "[Image of Member Photo]",
+                teamMember2Name: "[Member Name]",
+                teamMember2Title: "PhD Student / Master Student / Postdoc",
+                teamMember2Area: "[Research Direction]",
+                teamMember3Alt: "[Image of Member Photo]",
+                teamMember3Name: "[Member Name]",
+                teamMember3Title: "PhD Student / Master Student / Postdoc",
+                teamMember3Area: "[Research Direction]",
+                teamMember4Alt: "[Image of Member Photo]",
+                teamMember4Name: "[Member Name]",
+                teamMember4Title: "PhD Student / Master Student / Postdoc",
+                teamMember4Area: "[Research Direction]",
+                contactTitle: "Contact Us",
+                contactAddrLabel: "Address: ",
+                contactAddrValue: "[Building and Room No.], Tsinghua University, Haidian District, Beijing",
+                contactZipLabel: "Zip Code: ",
+                contactZipValue: "100084",
+                contactEmailLabel: "Email: ",
+                contactEmailValue: "[group_email@example.com]", // Keep email same
+                contactWelcomeMsg: "We welcome inquiries from prospective students, postdoctoral researchers, and visiting scholars interested in our research.",
+                footerRights: "&copy; 2025 [Research Group Name], Tsinghua University. All rights reserved.",
+                footerCredits: "Website Design & Development",
+                // Chat Widget specific
+                chatTitle: "AI Assistant",
+                chatWelcome: "Hello! How can I help you learn about our research group?",
+                chatPlaceholder: "Type your question here...",
+                chatSendButtonTitle: "Send",
+                chatButtonTitle: "Ask about the research group",
+                chatLoading: "Thinking...",
+                chatError: "Sorry, I cannot connect to the assistant service right now. Please try again later."
+            }
+        };
 
-        // Mobile Menu Toggle Logic (Same as before)
+        let currentLanguage = 'zh'; // Default language
+
+        // --- Function to set language ---
+        function setLanguage(lang) {
+            if (!languageData[lang]) return; // Exit if language not found
+
+            currentLanguage = lang;
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en'; // Update html lang attribute
+
+            const elements = document.querySelectorAll('[data-lang-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (languageData[lang][key]) {
+                    // Use innerHTML for elements that might contain HTML tags (like publication list)
+                    if (key.startsWith('pub')) {
+                         el.innerHTML = languageData[lang][key];
+                    } else {
+                        el.textContent = languageData[lang][key];
+                    }
+                }
+            });
+
+            // Update elements with placeholder text
+            const placeholders = document.querySelectorAll('[data-lang-placeholder]');
+            placeholders.forEach(el => {
+                const key = el.getAttribute('data-lang-placeholder');
+                if (languageData[lang][key]) {
+                    el.placeholder = languageData[lang][key];
+                }
+            });
+
+             // Update elements with title text
+            const titles = document.querySelectorAll('[data-lang-title]');
+            titles.forEach(el => {
+                const key = el.getAttribute('data-lang-title');
+                if (languageData[lang][key]) {
+                    el.title = languageData[lang][key];
+                }
+            });
+
+             // Update elements with alt text
+            const alts = document.querySelectorAll('[data-lang-alt]');
+            alts.forEach(el => {
+                const key = el.getAttribute('data-lang-alt');
+                if (languageData[lang][key]) {
+                    el.alt = languageData[lang][key];
+                }
+            });
+
+
+            // Update language toggle button text
+            const langToggleBtn = document.getElementById('lang-toggle');
+            const langToggleMobileBtn = document.getElementById('lang-toggle-mobile');
+            if (langToggleBtn) langToggleBtn.textContent = languageData[lang]['langToggle'];
+            if (langToggleMobileBtn) langToggleMobileBtn.textContent = languageData[lang]['langToggleMobile'];
+
+
+            // Update chat welcome message if chat body is empty or only has the welcome message
+            const chatBodyContent = chatBody.querySelectorAll('.chat-message');
+             if (chatBodyContent.length <= 1) { // Clear previous welcome if exists
+                chatBody.innerHTML = ''; // Clear chat body
+                appendMessage(languageData[lang]['chatWelcome'], 'bot'); // Add new welcome message
+             }
+
+            // Store language preference (optional)
+            // localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // --- Language Toggle Button Handler ---
+        function handleLanguageToggle() {
+            const newLang = currentLanguage === 'zh' ? 'en' : 'zh';
+            setLanguage(newLang);
+        }
+
+        // Add listeners to both desktop and mobile toggle buttons
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langToggleMobileBtn = document.getElementById('lang-toggle-mobile');
+        if (langToggleBtn) langToggleBtn.addEventListener('click', handleLanguageToggle);
+        if (langToggleMobileBtn) langToggleMobileBtn.addEventListener('click', handleLanguageToggle);
+
+
+        // --- Initialize Lucide Icons ---
+        lucide.createIcons();
+
+        // --- Mobile Menu Toggle Logic ---
         const menuButton = document.getElementById('menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelectorAll('#mobile-menu a');
@@ -336,7 +440,7 @@
             mobileMenu.classList.toggle('hidden');
             const icon = menuButton.querySelector('i');
             icon.setAttribute('data-lucide', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
-            lucide.createIcons();
+            lucide.createIcons(); // Re-render icon
         });
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -346,7 +450,7 @@
             });
         });
 
-        // Chat Widget Logic
+        // --- Chat Widget Logic ---
         const chatButton = document.getElementById('chat-button');
         const chatWindow = document.getElementById('chat-window');
         const closeChatButton = document.getElementById('close-chat');
@@ -354,14 +458,14 @@
         const chatInput = document.getElementById('chat-input');
         const sendButton = document.getElementById('send-button');
 
-        // --- Toggle Chat Window Visibility ---
+        // Toggle Chat Window Visibility
         chatButton.addEventListener('click', () => {
             const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
             chatWindow.style.display = isHidden ? 'flex' : 'none';
             chatButton.style.display = isHidden ? 'none' : 'flex';
              if (isHidden) {
-                chatInput.focus(); // Focus input when opening
-                chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
+                chatInput.focus();
+                chatBody.scrollTop = chatBody.scrollHeight;
             }
         });
 
@@ -370,132 +474,101 @@
             chatButton.style.display = 'flex';
         });
 
-        // --- Send Message Handler ---
+        // Send Message Handler
         const handleSendMessage = async () => {
             const userMessage = chatInput.value.trim();
-            if (!userMessage) return; // Don't send empty messages
+            if (!userMessage) return;
 
-            // 1. Display user's message
             appendMessage(userMessage, 'user');
-            chatInput.value = ''; // Clear input field
-            sendButton.disabled = true; // Disable button while processing
-            sendButton.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>'; // Show loading icon
+            chatInput.value = '';
+            sendButton.disabled = true;
+            sendButton.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>';
             lucide.createIcons();
 
-            // 2. Add a temporary "loading" message from the bot
-            const loadingMessageElement = appendMessage('思考中...', 'loading'); // Use a specific class
+            const loadingMessageElement = appendMessage(languageData[currentLanguage]['chatLoading'], 'loading');
 
             try {
-                // 3. Call the (simulated) API
-                const botResponse = await callChatApi(userMessage);
-
-                // 4. Remove loading message and display bot's actual response
+                // Pass current language to API (simulation)
+                const botResponse = await callChatApi(userMessage, currentLanguage);
                 loadingMessageElement.remove();
                 appendMessage(botResponse, 'bot');
-
             } catch (error) {
-                // 5. Remove loading message and display error
                 loadingMessageElement.remove();
                 console.error("API call failed:", error);
-                appendMessage('抱歉，暂时无法连接到助手服务，请稍后再试。', 'error'); // Use error class
+                appendMessage(languageData[currentLanguage]['chatError'], 'error');
             } finally {
-                // 6. Re-enable send button
                 sendButton.disabled = false;
-                sendButton.innerHTML = '<i data-lucide="send" class="w-5 h-5"></i>'; // Restore send icon
+                sendButton.innerHTML = '<i data-lucide="send" class="w-5 h-5"></i>';
                 lucide.createIcons();
-                chatInput.focus(); // Re-focus input
+                chatInput.focus();
             }
         };
 
-        // Add event listeners for sending message
         sendButton.addEventListener('click', handleSendMessage);
         chatInput.addEventListener('keypress', (event) => {
-            // Send message on Enter key press
             if (event.key === 'Enter') {
                 handleSendMessage();
             }
         });
 
-        // --- Simulate API Call Function ---
-        // IMPORTANT: Replace this with your actual API call logic
-        async function callChatApi(message) {
-            console.log("Simulating API call with message:", message);
-            // ** REPLACE THIS SECTION **
-            const apiUrl = '/api/chat'; // Placeholder URL - Replace with your actual API endpoint
-            const apiKey = 'YOUR_API_KEY'; // Placeholder - Securely manage your API keys
+        // Simulate API Call Function (Now accepts language)
+        async function callChatApi(message, lang) {
+            console.log(`Simulating API call with message: "${message}" in language: ${lang}`);
+            const apiUrl = '/api/chat';
+            const apiKey = 'YOUR_API_KEY';
 
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 1500)); // 1.5 second delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
 
-            // --- Start of Simulation ---
-            // Simulate a successful response based on keywords (very basic)
-            if (message.includes("研究方向")) {
-                 return "我们模拟的API回复：我们的研究方向主要集中在...[此处应为API返回的真实内容]";
-            } else if (message.includes("加入") || message.includes("申请")) {
-                 return "我们模拟的API回复：关于加入我们课题组...[此处应为API返回的真实内容]";
-            } else if (message.includes("你好") || message.includes("hello")) {
-                 return "我们模拟的API回复：你好！很高兴为您服务。";
-            }
-            // Simulate a generic successful response
-            // return `我们模拟的API回复：收到了您的问题 "${message}"。正在处理... [此处应为API返回的真实内容]`;
-            // --- End of Simulation ---
-
-            // --- Example of a real fetch call structure (commented out) ---
-            /*
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        // Add Authorization header if needed, e.g.:
-                        // 'Authorization': `Bearer ${apiKey}`
-                    },
-                    body: JSON.stringify({
-                        query: message
-                        // Add any other required parameters by your API
-                    })
-                });
-
-                if (!response.ok) {
-                    // Handle HTTP errors (e.g., 404, 500)
-                    throw new Error(`HTTP error! status: ${response.status}`);
+            // --- Simulation Logic (language aware) ---
+            const responses = {
+                zh: {
+                    research: "我们模拟的API回复(中文)：我们的研究方向主要集中在...",
+                    join: "我们模拟的API回复(中文)：关于加入我们课题组...",
+                    greeting: "我们模拟的API回复(中文)：你好！很高兴为您服务。",
+                    default: `我们模拟的API回复(中文)：关于 "${message}"，我需要更多信息...`
+                },
+                en: {
+                    research: "Simulated API Response (EN): Our research focuses on...",
+                    join: "Simulated API Response (EN): Regarding joining our group...",
+                    greeting: "Simulated API Response (EN): Hello! Happy to help.",
+                    default: `Simulated API Response (EN): Regarding "${message}", I need more info...`
                 }
-
-                const data = await response.json();
-
-                // Extract the answer from the API response structure
-                // This depends entirely on your API's response format
-                const answer = data.answer || data.response || data.text || "抱歉，未能解析API响应。";
-                return answer;
-
-            } catch (error) {
-                console.error('Error calling chat API:', error);
-                throw error; // Re-throw the error to be caught by the caller
             }
+            const currentResponses = responses[lang] || responses['en']; // Default to English if lang not found
+
+            if (message.includes("研究方向") || message.toLowerCase().includes("research")) {
+                 return currentResponses.research;
+            } else if (message.includes("加入") || message.includes("申请") || message.toLowerCase().includes("join") || message.toLowerCase().includes("apply")) {
+                 return currentResponses.join;
+            } else if (message.includes("你好") || message.toLowerCase().includes("hello")) {
+                 return currentResponses.greeting;
+            }
+            return currentResponses.default;
+            // --- End Simulation ---
+
+            // --- Real fetch example would need to potentially pass 'lang' in the body or headers ---
+            /*
+             const response = await fetch(apiUrl, {
+                 method: 'POST',
+                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+                 body: JSON.stringify({ query: message, language: lang }) // Example
+             });
+             // ... rest of fetch logic
             */
-           // --- End of real fetch example ---
-
-           // Simulate an error condition (uncomment to test error handling)
-           // throw new Error("Simulated API failure");
-
-           // Default simulated response if no keywords matched
-           return `我们模拟的API回复：关于 "${message}"，我需要更多信息才能回答。[此处应为API返回的真实内容]`;
         }
 
-
-        // --- Helper function to add messages to the chat body ---
+        // Helper function to add messages
         function appendMessage(text, type) {
             const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', type); // 'user', 'bot', 'loading', or 'error'
-            // Basic text sanitization (replace with a robust library if needed)
+            messageDiv.classList.add('chat-message', type);
+            // Use textContent for safety, unless you specifically need HTML
             messageDiv.textContent = text;
             chatBody.appendChild(messageDiv);
-            // Scroll to the bottom to show the latest message
             chatBody.scrollTop = chatBody.scrollHeight;
-            return messageDiv; // Return the element for potential removal (like loading message)
+            return messageDiv;
         }
 
-        // --- Close chat if clicking outside of it (Optional Enhancement) ---
+        // Close chat if clicking outside
         document.addEventListener('click', function(event) {
           const isClickInsideChat = chatWindow.contains(event.target);
           const isClickOnButton = chatButton.contains(event.target);
@@ -504,6 +577,14 @@
             chatButton.style.display = 'flex';
           }
         });
+
+        // --- Initial Setup ---
+        // Check localStorage for saved language preference (optional)
+        // const savedLang = localStorage.getItem('preferredLanguage');
+        // setLanguage(savedLang || 'zh'); // Load saved lang or default to Chinese
+
+        // Set initial language (defaulting to Chinese 'zh')
+        setLanguage('zh');
 
     </script>
 </body>
