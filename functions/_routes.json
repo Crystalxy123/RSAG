@@ -1,3 +1,0 @@
-[
-    {"pattern": "/api/chat", "function": "api/chat/index.js"}
-  ]
