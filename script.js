@@ -324,6 +324,7 @@
             chatInput.addEventListener('keypress', (event) => {
                 // Send message on Enter key press
                 if (event.key === 'Enter') {
+                    console.log('Enter key pressed!');
                     handleSendMessage();
                 }
             });
