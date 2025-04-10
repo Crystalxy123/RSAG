@@ -7,7 +7,7 @@ export async function onRequestPost(context) {
         const openaiKey = context.env.OPENAI_API_KEY;
         const model = "gpt-4o";
         
-        const response = await fetch("https://api.gpt.ge/v1/", {
+        const response = await fetch("https://api.gpt.ge/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
