@@ -200,6 +200,7 @@
 
 
             // Update chat welcome message if chat body is empty or only has the welcome message
+            const chatBody = document.getElementById('chat-widget');
             const chatBodyContent = chatBody.querySelectorAll('.chat-message');
              if (chatBodyContent.length <= 1) { // Clear previous welcome if exists
                 chatBody.innerHTML = ''; // Clear chat body
