@@ -200,7 +200,7 @@
 
 
             // Update chat welcome message if chat body is empty or only has the welcome message
-            const chatBody = document.getElementById('chat-widget');
+            const chatBody = document.getElementById('chat-body');
             const chatBodyContent = chatBody.querySelectorAll('.chat-message');
              if (chatBodyContent.length <= 1) { // Clear previous welcome if exists
                 chatBody.innerHTML = ''; // Clear chat body
@@ -260,7 +260,7 @@
         const chatButton = document.getElementById('chat-button');
         const chatWindow = document.getElementById('chat-window');
         const closeChatButton = document.getElementById('close-chat');
-        const chatBody = document.getElementById('chat-body');
+        // const chatBody = document.getElementById('chat-body');
         const chatInput = document.getElementById('chat-input');
         const sendButton = document.getElementById('send-button');
 
