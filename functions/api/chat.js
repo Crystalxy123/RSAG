@@ -302,6 +302,7 @@ function generateRandomId(length = 24) {
         const ragResult = await env.AI.autorag("rsag").aiSearch({
           query: message // 将用户的实际消息作为查询
         });
+        console.log("Auto RAG 结果:", ragResult); // 添加这行来查看中间输出
         if (ragResult && ragResult.data && ragResult.data.length > 0) {
           contextContent = "以下是与您问题相关的文档片段，请参考它们来回答问题：\n";
           ragResult.data.forEach((item, index) => {
