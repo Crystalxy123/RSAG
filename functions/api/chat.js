@@ -255,7 +255,7 @@ function generateRandomId(length = 24) {
     try {
       const { request, env } = context;
       const { message, language } = await request.json();
-      const chatLimit = 10; // 设置每个用户的每日聊天次数限制
+      const chatLimit = 20; // 设置每个用户的每日聊天次数限制
       const kv = env.CHAT_COUNT_KV; // 绑定您的 KV 命名空间
   
       if (!kv) {
@@ -297,22 +297,44 @@ function generateRandomId(length = 24) {
       }
   
       // **----- 使用 Cloudflare Auto RAG -----**
-      let contextContent = "";
-      try {
+    //   let contextContent = "";
+    //   try {
+    //     const ragResult = await env.AI.autorag("rsag").aiSearch({
+    //       query: message // 将用户的实际消息作为查询
+    //     });
+    //     console.log("Auto RAG 结果:", ragResult); // 添加这行来查看中间输出
+    //     if (ragResult && ragResult.data && ragResult.data.length > 0) {
+    //       contextContent = "以下是与您问题相关的文档片段，请参考它们来回答问题：\n";
+    //       ragResult.data.forEach((item, index) => {
+    //         contextContent += `[文档 ${index + 1}]\n${item.content}\n\n`; // 假设内容在 item.content 中
+    //       });
+    //     }
+    //   } catch (error) {
+    //     console.error("Cloudflare Auto RAG 搜索失败:", error);
+    //     contextContent = "无法检索到相关信息。";
+    //   }
+        let contextContent = "";
+        try {
         const ragResult = await env.AI.autorag("rsag").aiSearch({
-          query: message // 将用户的实际消息作为查询
+            query: message // 将用户的实际消息作为查询
         });
         console.log("Auto RAG 结果:", ragResult); // 添加这行来查看中间输出
         if (ragResult && ragResult.data && ragResult.data.length > 0) {
-          contextContent = "以下是与您问题相关的文档片段，请参考它们来回答问题：\n";
-          ragResult.data.forEach((item, index) => {
-            contextContent += `[文档 ${index + 1}]\n${item.content}\n\n`; // 假设内容在 item.content 中
-          });
+            contextContent = "以下是与您问题相关的文档片段，请参考它们来回答问题：\n";
+            ragResult.data.forEach((item, index) => {
+            if (item.content && Array.isArray(item.content)) {
+                item.content.forEach(contentItem => {
+                if (contentItem.type === 'text' && contentItem.text) {
+                    contextContent += `[文档 ${index + 1}]\n${contentItem.text}\n\n`;
+                }
+                });
+            }
+            });
         }
-      } catch (error) {
+        } catch (error) {
         console.error("Cloudflare Auto RAG 搜索失败:", error);
         contextContent = "无法检索到相关信息。";
-      }
+        }
       // **----- Auto RAG 部分结束 -----**
   
       const messages = [
