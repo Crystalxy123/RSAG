@@ -260,7 +260,7 @@
         const chatButton = document.getElementById('chat-button');
         const chatWindow = document.getElementById('chat-window');
         const closeChatButton = document.getElementById('close-chat');
-        // const chatBody = document.getElementById('chat-body');
+        const chatBody = document.getElementById('chat-body');
         const chatInput = document.getElementById('chat-input');
         const sendButton = document.getElementById('send-button');
 
