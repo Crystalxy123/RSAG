@@ -73,7 +73,7 @@
                 contactZipLabel: "邮编：",
                 contactZipValue: "100084",
                 contactEmailLabel: "邮箱：",
-                contactEmailValue: "[课题组邮箱]", // Keep email same
+                contactEmailValue: "jingang@tsinghua.edu.cn", // Keep email same
                 contactWelcomeMsg: "欢迎对我们研究感兴趣的潜在学生、博士后研究员和访问学者与我们联系。",
                 footerRights: "&copy; 2025 INET-RSAG, 清华大学. 保留所有权利。",
                 footerCredits: "First designed by Ben Qi",
@@ -155,11 +155,11 @@
                 teamMember9Area: "[Research Direction]",
                 contactTitle: "Contact Us",
                 contactAddrLabel: "Address: ",
-                contactAddrValue: "[Building and Room No.], Tsinghua University, Haidian District, Beijing",
+                contactAddrValue: "Nengke Building D, Tsinghua University, Haidian District, Beijing",
                 contactZipLabel: "Zip Code: ",
                 contactZipValue: "100084",
                 contactEmailLabel: "Email: ",
-                contactEmailValue: "[group_email@example.com]", // Keep email same
+                contactEmailValue: "jingang@tsinghua.edu.cn", // Keep email same
                 contactWelcomeMsg: "We welcome inquiries from prospective students, postdoctoral researchers, and visiting scholars interested in our research.",
                 footerRights: "&copy; 2025 [Research Group Name], Tsinghua University. All rights reserved.",
                 footerCredits: "First designed by Ben Qi",
