@@ -54,7 +54,7 @@
                 teamMember6Alt: "[Image of 成员照片]",
                 teamMember6Name: "萧星宇",
                 teamMember6Title: "博士生",
-                teamMember6Area: "[研究方向]",
+                teamMember6Area: "先进核电系统人因可靠性建模与智能评估研究",
                 teamMember7Alt: "[Image of 成员照片]",
                 teamMember7Name: "曹成昊",
                 teamMember7Title: "硕士生",
