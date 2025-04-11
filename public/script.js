@@ -17,7 +17,7 @@
                 langToggleMobile: "EN",
                 homeTitle: "欢迎来到INET-RSAG",
                 homeSubtitle: "隶属于清华大学核能与新能源技术研究院",
-                homeDesc: "我们致力于通过核反应堆先进模拟分析方法研究，改进核能系统效率及安全水平。欢迎对我们研究方向感兴趣的同学和学者加入或与我们合作。",
+                homeDesc: "我们致力于通过核反应堆先进模拟分析方法研究，改进核能系统效率及安全水平。",
                 homeImageAlt: "[Image of 课题组风采]",
                 researchTitle: "研究方向",
                 researchArea1Title: "[研究方向一]",
