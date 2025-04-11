@@ -1,8 +1,8 @@
         // --- Language Data ---
         const languageData = {
             'zh': {
-                websiteTitle: "课题组名称 - 清华大学",
-                groupNameShort: "课题组名称",
+                websiteTitle: "INET-RSAG - 清华大学",
+                groupNameShort: "INET-RSAG",
                 navHome: "首页",
                 navResearch: "研究方向",
                 navPublications: "发表论文",
@@ -15,9 +15,9 @@
                 navContactMobile: "联系我们",
                 langToggle: "EN", // Text for the button to switch TO English
                 langToggleMobile: "EN",
-                homeTitle: "欢迎来到 [课题组名称]",
-                homeSubtitle: "隶属于清华大学 [学院/系名]",
-                homeDesc: "我们致力于 [主要研究领域] 的前沿探索，旨在 [研究目标]。欢迎对我们研究方向感兴趣的同学和学者加入或与我们合作。",
+                homeTitle: "欢迎来到INET-RSAG",
+                homeSubtitle: "隶属于清华大学核能与新能源技术研究院",
+                homeDesc: "我们致力于通过核反应堆先进模拟分析方法研究，改进核能系统效率及安全水平。欢迎对我们研究方向感兴趣的同学和学者加入或与我们合作。",
                 homeImageAlt: "[Image of 课题组风采]",
                 researchTitle: "研究方向",
                 researchArea1Title: "[研究方向一]",
