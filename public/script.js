@@ -42,7 +42,7 @@
                 teamMember3Alt: "[Image of 成员照片]",
                 teamMember3Name: "李睿涵",
                 teamMember3Title: "博士生",
-                teamMember3Area: "[研究方向]",
+                teamMember3Area: "高温气冷堆高保真多物理耦合研究",
                 teamMember4Alt: "[Image of 成员照片]",
                 teamMember4Name: "张伟健",
                 teamMember4Title: "硕士生",
