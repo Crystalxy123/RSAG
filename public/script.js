@@ -200,7 +200,37 @@
             elements.forEach(el => {
                 const key = el.getAttribute('data-lang-key');
                 if (languageData[lang][key] !== undefined) { // Check if key exists
-                  if (key === 'teamMember6Name') {
+                    if (key === 'teamMember1Name') {
+                        // 特殊处理 teamMember6Name，添加链接
+                        const homepageUrl = 'https://www.inet.tsinghua.edu.cn/ineten/info/1143/1647.htm';
+                        const link = document.createElement('a');
+                        link.href = homepageUrl;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        link.className = 'text-gray-800 hover:underline';
+                        link.textContent = languageData[lang][key];
+        
+                        // 清空 <h3> 标签的内容
+                        el.innerHTML = '';
+                        // 将 <a> 标签添加到 <h3> 标签中
+                        el.appendChild(link);
+                      } 
+                      else if (key === 'teamMember2Name') {
+                        // 特殊处理 teamMember6Name，添加链接
+                        const homepageUrl = 'https://www.researchgate.net/profile/Ben-Qi?ev=hdr_xprf';
+                        const link = document.createElement('a');
+                        link.href = homepageUrl;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        link.className = 'text-gray-800 hover:underline';
+                        link.textContent = languageData[lang][key];
+        
+                        // 清空 <h3> 标签的内容
+                        el.innerHTML = '';
+                        // 将 <a> 标签添加到 <h3> 标签中
+                        el.appendChild(link);
+                      } 
+                    else if (key === 'teamMember6Name') {
                     // 特殊处理 teamMember6Name，添加链接
                     const homepageUrl = 'https://crystalxy123.github.io/';
                     const link = document.createElement('a');
@@ -215,21 +245,7 @@
                     // 将 <a> 标签添加到 <h3> 标签中
                     el.appendChild(link);
                   } 
-                  else if (key === 'teamMember2Name') {
-                    // 特殊处理 teamMember6Name，添加链接
-                    const homepageUrl = 'https://www.researchgate.net/profile/Ben-Qi?ev=hdr_xprf';
-                    const link = document.createElement('a');
-                    link.href = homepageUrl;
-                    link.target = '_blank';
-                    link.rel = 'noopener noreferrer';
-                    link.className = 'text-gray-800 hover:underline';
-                    link.textContent = languageData[lang][key];
-    
-                    // 清空 <h3> 标签的内容
-                    el.innerHTML = '';
-                    // 将 <a> 标签添加到 <h3> 标签中
-                    el.appendChild(link);
-                  } 
+                  
                   else if (key.startsWith('pub')) {
                     el.innerHTML = languageData[lang][key];
                   } else {
