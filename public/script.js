@@ -62,7 +62,7 @@
                 teamMember8Alt: "[Image of 成员照片]",
                 teamMember8Name: "郭天远",
                 teamMember8Title: "硕士生",
-                teamMember8Area: "[研究方向]",
+                teamMember8Area: "高温气冷堆事故工况下裂变产物迁移行为及厂房滞留效应研究",
                 teamMember9Alt: "[Image of 成员照片]",
                 teamMember9Name: "沈绍宁",
                 teamMember9Title: "博士生/科研助理",
@@ -184,19 +184,6 @@
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en'; // Update html lang attribute
 
             const elements = document.querySelectorAll('[data-lang-key]');
-            // elements.forEach(el => {
-            //     const key = el.getAttribute('data-lang-key');
-            //     if (languageData[lang][key] !== undefined) { // Check if key exists
-            //         // Use innerHTML for elements that might contain HTML tags (like publication list)
-            //         if (key.startsWith('pub')) {
-            //              el.innerHTML = languageData[lang][key];
-            //         } else {
-            //             el.textContent = languageData[lang][key];
-            //         }
-            //     } else {
-            //         console.warn(`Missing translation key: ${key} for language: ${lang}`);
-            //     }
-            // });
             elements.forEach(el => {
                 const key = el.getAttribute('data-lang-key');
                 if (languageData[lang][key] !== undefined) { // Check if key exists
