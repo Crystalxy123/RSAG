@@ -124,7 +124,7 @@
                 teamMember2Alt: "[Image of Member Photo]",
                 teamMember2Name: "Ben Qi",
                 teamMember2Title: "PhD Student/Master",
-                teamMember2Area: "Intelligent analysis method research on abnormal operation of high-temperature gas-cooled reactors",
+                teamMember2Area: "Intelligent monitoring, diagnosis and prediction of nuclear energy systems",
                 teamMember3Alt: "[Image of Member Photo]",
                 teamMember3Name: "Ruihan Li",
                 teamMember3Title: "PhD Student",
