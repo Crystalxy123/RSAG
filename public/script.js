@@ -58,7 +58,7 @@
                 teamMember7Alt: "[Image of 成员照片]",
                 teamMember7Name: "曹成昊",
                 teamMember7Title: "硕士生",
-                teamMember7Area: "[研究方向]",
+                teamMember7Area: "高温气冷堆放射性源项分析",
                 teamMember8Alt: "[Image of 成员照片]",
                 teamMember8Name: "郭天远",
                 teamMember8Title: "硕士生",
