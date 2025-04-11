@@ -66,7 +66,7 @@
                 teamMember9Alt: "[Image of 成员照片]",
                 teamMember9Name: "沈绍宁",
                 teamMember9Title: "博士生/科研助理",
-                teamMember9Area: "[研究方向]",
+                teamMember9Area: "中子输运",
                 contactTitle: "联系我们",
                 contactAddrLabel: "地址：",
                 contactAddrValue: "北京市海淀区清华大学能科楼D座",
