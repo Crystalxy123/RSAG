@@ -135,7 +135,7 @@
                 teamMember4Area: "Experimental benchmark design of high-temperature gas-cooled reactor irradiated fuel source term based on γ spectrometry",
                 teamMember5Alt: "[Image of Member Photo]",
                 teamMember5Name: "Junyi Chen",
-                teamMember5Title: "PhD Student",
+                teamMember5Title: "PhD Candidate",
                 teamMember5Area: "Research on advanced calculation methods for radiation shielding and GPU parallel development",
                 teamMember6Alt: "[Image of Member Photo]",
                 teamMember6Name: "Xingyu Xiao",
