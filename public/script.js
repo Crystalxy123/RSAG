@@ -217,6 +217,21 @@
                         // 将 <a> 标签添加到 <h3> 标签中
                         el.appendChild(link);
                       } 
+                      else if (key === 'teamMember4Name') {
+                        // 特殊处理 teamMember6Name，添加链接
+                        const homepageUrl = 'https://github.com/Albert-Zhangweijian';
+                        const link = document.createElement('a');
+                        link.href = homepageUrl;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        link.className = 'text-gray-800 hover:underline';
+                        link.textContent = languageData[lang][key];
+        
+                        // 清空 <h3> 标签的内容
+                        el.innerHTML = '';
+                        // 将 <a> 标签添加到 <h3> 标签中
+                        el.appendChild(link);
+                      } 
                     else if (key === 'teamMember6Name') {
                     // 特殊处理 teamMember6Name，添加链接
                     const homepageUrl = 'https://crystalxy123.github.io/';
