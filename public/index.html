@@ -142,24 +142,29 @@
             <p class="text-center mt-6"><a href="publications.html" class="text-tsinghua-purple hover:underline" data-lang-key="publicationsLink">查看所有发表论文 &rarr;</a></p>
         </section> -->
 
-        <section id="publication-preview" class="container">
-            <h2>最新发表 (SCI)</h2>
+        <section id="publications" class="mb-16 scroll-mt-16 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 border-b-2 border-tsinghua-purple pb-2 inline-block mx-auto" data-lang-key="publicationsTitle">发表论文</h2>
     
-            <!-- 论文预览将加载到这个 ul 列表中 -->
-            <ul id="publication-preview-list" class="publication-preview-list">
+            <!-- 使用你原来的 UL 结构，并添加 ID -->
+            <ul id="publication-preview-list" class="space-y-4">
     
-                <!-- 占位符 1 -->
-                <li class="publication-loading">
-                     <p>正在加载最新论文...</p>
+                <!-- 占位符 1: 应用目标样式，并添加加载状态类 -->
+                <li class="bg-white rounded-md shadow-sm border border-gray-200 publication-loading">
+                    <!-- 内部放一个临时的 p 标签显示加载信息 -->
+                     <p class="content-placeholder text-gray-700 p-4">正在加载最新论文...</p>
                 </li>
     
-                <!-- 占位符 2 -->
-                <li class="publication-loading">
-                     <p>正在加载第二篇论文...</p>
+                <!-- 占位符 2: 应用目标样式，并添加加载状态类 -->
+                <li class="bg-white rounded-md shadow-sm border border-gray-200 publication-loading">
+                     <p class="content-placeholder text-gray-700 p-4">正在加载第二篇论文...</p>
                 </li>
     
             </ul>
-            <a href="publications.html" class="view-all-link">查看所有发表论文 →</a>
+    
+            <!-- 使用你原来的“查看所有”链接 -->
+            <p class="text-center mt-6">
+                <a href="publications.html" class="text-tsinghua-purple hover:underline" data-lang-key="publicationsLink">查看所有发表论文 →</a>
+            </p>
         </section>
 
         <section id="team" class="mb-16 scroll-mt-16">
