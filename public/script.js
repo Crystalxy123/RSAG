@@ -18,7 +18,7 @@
                 homeTitle: "欢迎来到INET-RSAG",
                 homeSubtitle: "隶属于清华大学核能与新能源技术研究院",
                 homeDesc: "致力于通过核反应堆先进模拟分析方法研究，改进核能系统效率及安全水平。",
-                newsItem1Title: "课题组成员萧星宇做国奖经验分享",
+                newsItem1Title: "团队成员萧星宇做国奖经验分享",
                 newsItem1Date: "2025年4月28日",
                 homeImageAlt: "[Image of 课题组风采]",
                 researchTitle: "研究方向",
