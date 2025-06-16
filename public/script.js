@@ -1,4 +1,5 @@
-        // --- Language Data ---
+<script src="https://unpkg.com/lucide@latest"></script>
+       // --- Language Data ---
         const languageData = {
             'zh': {
                 websiteTitle: "INET-RSAG - 清华大学",
