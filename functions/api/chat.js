@@ -96,7 +96,7 @@ function generateRandomId(length = 24) {
       const messages = [
         {
           role: "system",
-          content: `You are a helpful assistant for the [课题组名称] research group at Tsinghua University. Please answer questions about the group based on the following context. Respond in ${language === 'zh' ? 'Chinese' : 'English'}. If the context does not contain the answer, please state that you cannot answer based on the provided information.`
+          content: `You are a helpful assistant for the RSAG research group at Tsinghua University. Please answer questions about the group based on the following context. Respond in ${language === 'zh' ? 'Chinese' : 'English'}. If the context does not contain the answer, please state that you cannot answer based on the provided information.`
         },
         {
           role: "user",
