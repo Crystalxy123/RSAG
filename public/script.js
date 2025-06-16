@@ -85,7 +85,7 @@
                 contactEmailValue: "jingang@tsinghua.edu.cn", // Keep email same
                 contactWelcomeMsg: "欢迎对我们研究感兴趣的潜在学生、博士后研究员和访问学者与我们联系。",
                 footerRights: "&copy; 2025 INET-RSAG, 清华大学. 保留所有权利。",
-                footerCredits: "First designed by Ben Qi",
+                footerCredits: "First designed by Ben Qi",                
                 // Chat Widget specific
                 chatTitle: "智能助手",
                 chatWelcome: "你好！有什么可以帮您了解我们课题组的吗？",
