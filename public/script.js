@@ -19,6 +19,8 @@
                 homeSubtitle: "隶属于清华大学核能与新能源技术研究院",
                 homeDesc: "致力于通过核反应堆先进模拟分析方法研究，改进核能系统效率及安全水平。",
                 newsTitle: "最近新闻",
+                newsItem0Title: "欢迎沈绍宁、郭天远同学加入团队", //Welcome Shen Shaoning and Guo Tianyuan to join the team
+                newsItem0Date: "2024年9月1日",
                 newsItem1Title: "团队成员萧星宇做国奖经验分享",
                 newsItem1Date: "2025年4月28日",
                 newsItem2Title: "团队成员曹成昊在ANE发表最新研究成果",
@@ -114,6 +116,8 @@
                 homeSubtitle: "Affiliated with the Institute of Nuclear and New Energy Technology, Tsinghua University",
                 homeDesc: "We are dedicated to improving the efficiency and safety of nuclear energy systems through advanced simulation and analysis methods for nuclear reactors.",
                 newsTitle: "Recent News",
+                newsItem0Title: "Welcome Shen Shaoning and Guo Tianyuan to join the team", 
+                newsItem0Date: "Sep 1, 2024",
                 newsItem1Title: "Team member Xingyu Xiao makes National Award experience sharing",
                 newsItem1Date: "Apr 28, 2025",
                 newsItem2Title: "Team member Chenghao Cao publishes latest research results at ANE",
