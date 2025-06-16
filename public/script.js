@@ -1,4 +1,3 @@
-<script src="https://unpkg.com/lucide@latest"></script>
        // --- Language Data ---
         const languageData = {
             'zh': {
