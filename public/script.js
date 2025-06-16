@@ -118,7 +118,7 @@
                 newsItem1Date: "Apr 28, 2025",
                 newsItem2Title: "Team member Chenghao Cao publishes latest research results at ANE",
                 newsItem2Date: "April 28, 2025",
-                newsItem3Title: "Congrats! Qi Ben & Li Ruihan passed PhD defenses.",
+                newsItem3Title: "Congrats! Qi Ben and Li Ruihan passed PhD defenses.",
                 newsItem3Date: "May 9, 2025",
                 newsMoreLink:"More news",
                 homeImageAlt: "[Image of Research Group]",
